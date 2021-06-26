@@ -4,9 +4,41 @@
   
   
   <entry>
-    <title>Git</title>
-    <link href="/2021/03/30/Git/"/>
-    <url>/2021/03/30/Git/</url>
+    <title>数据开发面试题</title>
+    <link href="/2021/06/26/data-develop-interview/"/>
+    <url>/2021/06/26/data-develop-interview/</url>
+    
+    <content type="html"><![CDATA[<h2 id="数仓概念"><a href="#数仓概念" class="headerlink" title="数仓概念"></a>数仓概念</h2><ol><li><p>数据集市与数据仓库的区别</p></li><li><p>数仓分层</p><ul><li><p>ODS 数据运营层</p><p>贴源，抽取、清洗、传输。ETL的工作。不对源数据做业务逻辑加工。</p></li><li><p>DW 数据仓库层</p><ul><li>DWD 数据明细层</li><li>DWB 数据汇总层（低粒度）</li><li>DWS 数据汇总层（高粒度）</li></ul></li><li><p>[DM 数据集市层]</p></li><li><p>APP（ADS）数据应用层</p></li></ul></li><li><p>常见数据模型</p><ul><li><p>星型模型</p><p>所有维表都直接连接到事实表上。</p><p><strong>缺点</strong>：不存在渐变维度，所以数据有一定的冗余。如机构维表：</p><table><thead><tr><th>一级机构</th><th>二级机构</th><th>三级机构</th><th>四级机构</th></tr></thead><tbody><tr><td>总行</td><td>上海分行</td><td>浦东支行</td><td>浦东支行营业部</td></tr><tr><td>总行</td><td>上海分行</td><td>宝山支行</td><td>宝山支行营业部</td></tr><tr><td>总行</td><td>深圳分行</td><td>福田支行</td><td>福田支行营业部</td></tr></tbody></table><p>其中总行和上海分行出现多次，数据冗余</p><p><strong>优点</strong>：因为数据的冗余所以不需要做外部的连接，因此一般情况下效率比雪花模型要高</p></li><li><p>雪花模型</p><p>一个或多个维表没有直接连接到事实表上，而是通过其他维表连接到事实表上。</p><p><strong>优点</strong>：去除数据冗余，层次清晰</p><p><strong>缺点</strong>：查询效率会因为外部表关联而降低</p></li></ul></li><li><p>增量表、全量表、拉链表区别</p><p>拉链表如何使用</p></li></ol><h2 id="SQL-概念"><a href="#SQL-概念" class="headerlink" title="SQL 概念"></a>SQL 概念</h2><ol><li><p>dql、dml、dcl、ddl</p><ul><li>dql 数据查询语言</li><li>dml 数据操纵语言</li><li>dcl 数据库控制语言</li><li>ddl 数据定义语言</li></ul></li><li><p>left join 和 inner join 的区别</p></li><li><p>where 和 having 的区别</p></li><li><p>Insert into 和 insert overwrite 的区别</p></li><li><p>筛选条件放在 on 和 where 后面有什么区别</p></li><li><p>连续三个 full join 数据会重复吗</p></li><li><p>如何删除表内的数据</p></li><li><p>开窗函数的使用</p></li><li><p>HIVE 常用哪些函数</p><p><a href="https://mp.weixin.qq.com/s?__biz=MzI2MDQzOTk3MQ==&mid=2247485171&idx=2&sn=db48650b40e7a0c69928cd9a11fcf4c6&chksm=ea68ec3fdd1f65296081b0d88b3751dd22171bceeef204b3deae7b3defe83268c97298620be4&scene=21#wechat_redirect">HIVE 常用函数</a></p></li><li><p>数据去重有哪些方法</p></li><li><p>HIVE 建表有哪些方法</p><ol><li>直接建表</li><li>as</li><li>like</li></ol></li><li><p>HIVE 执行计划有看过吗？一般关注哪几个点？</p></li></ol><h2 id="SQL-代码"><a href="#SQL-代码" class="headerlink" title="SQL 代码"></a>SQL 代码</h2><h3 id="Q1"><a href="#Q1" class="headerlink" title="Q1"></a>Q1</h3><p>源表：</p><table><thead><tr><th>客户号</th><th>理财经理号</th><th>客户状态</th></tr></thead><tbody><tr><td>1</td><td>1</td><td>1</td></tr><tr><td>2</td><td>1</td><td>0</td></tr><tr><td>3</td><td>2</td><td>1</td></tr></tbody></table><p>目标表：</p><table><thead><tr><th>理财经理号</th><th>正常客户数</th><th>不正常客户数</th></tr></thead><tbody><tr><td>1</td><td>1</td><td>1</td></tr><tr><td>2</td><td>1</td><td>0</td></tr></tbody></table><h3 id="Q2"><a href="#Q2" class="headerlink" title="Q2"></a>Q2</h3><p>源表：</p><table><thead><tr><th>姓名</th><th>消费类型</th><th>金额</th></tr></thead><tbody><tr><td>Mike</td><td>breakfast</td><td>5</td></tr><tr><td>Mike</td><td>lunch</td><td>15</td></tr><tr><td>Mike</td><td>dinner</td><td>13</td></tr></tbody></table><p>目标表</p><table><thead><tr><th>姓名</th><th>早饭消费</th><th>午饭消费</th><th>晚饭消费</th></tr></thead><tbody><tr><td>Mike</td><td>5</td><td>15</td><td>13</td></tr></tbody></table><h3 id="Q3"><a href="#Q3" class="headerlink" title="Q3"></a>Q3</h3><p>客户名单表、黑名单。将客户名单中黑名单客户剔除</p><h3 id="Q4"><a href="#Q4" class="headerlink" title="Q4"></a>Q4</h3><p>TODO: left join 题</p><h2 id="SQL-优化"><a href="#SQL-优化" class="headerlink" title="SQL 优化"></a>SQL 优化</h2><ol><li><p>谈谈大表关联时可以做哪些优化</p></li><li><p>谈谈做过哪些 sql 优化</p><p><a href="https://mp.weixin.qq.com/s?__biz=MzI2MDQzOTk3MQ==&mid=2247485048&idx=1&sn=5fc1219f4947bea9743cd938cec510c7&chksm=ea68ecb4dd1f65a2df364d79272e0e472a394c5b13b5d55d848c89d9498ccb7ea78a933fbdea&scene=21#wechat_redirect">HIVE 调优</a></p></li><li><p>exists 和 in 分别在什么情况下效率高</p></li></ol><p>TODO: HIVE 优化文档</p><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol><li>简单的 python 基础</li><li>kafka 基本概念</li><li>kudu 基本概念</li><li>Kylin 基础知识</li></ol>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>bigdata</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2021/06/26/hello-world/"/>
+    <url>/2021/06/26/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><span id="more"></span><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Git 基础</title>
+    <link href="/2021/03/30/git-base/"/>
+    <url>/2021/03/30/git-base/</url>
     
     <content type="html"><![CDATA[<h3 id="1-配置"><a href="#1-配置" class="headerlink" title="1. 配置"></a>1. 配置</h3><ol><li><p>设置个人信息</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git config --global user.name <span class="hljs-string">&quot;foo&quot;</span><br>$ git config --global user.email foo@bar.com<br></code></pre></td></tr></table></figure></li><li><p>查看配置</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git config --list<br><br>credential.helper=osxkeychain<br>user.name=foo<br>user.email=foo@bar.com<br></code></pre></td></tr></table></figure></li></ol><h3 id="2-ssh"><a href="#2-ssh" class="headerlink" title="2. ssh"></a>2. ssh</h3><ol><li><p>新建密钥</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa -C <span class="hljs-string">&#x27;foo@bar.com&#x27;</span><br></code></pre></td></tr></table></figure><p> 公钥位置 <code>~/.ssh/id_rsa.pub</code><br> 私钥位置 <code>~/.ssh/id_rsa</code>  </p></li></ol><h3 id="3-命令"><a href="#3-命令" class="headerlink" title="3. 命令"></a>3. 命令</h3><ol><li><p>reset</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git reset [--soft|--mixed|--hard] [版本] [文件]<br></code></pre></td></tr></table></figure><ul><li><p>–mixed</p><p>  默认，可以不用带该参数。将版本库和暂存区回退到工作区</p></li><li><p>–soft</p><p>  将版本库回退到暂存区</p></li><li><p>–hard</p><p>  版本库、暂存区、工作区全部回退（慎用）</p></li></ul></li></ol>]]></content>
     
@@ -17,19 +49,6 @@
       <tag>git</tag>
       
     </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="/2021/03/28/hello-world/"/>
-    <url>/2021/03/28/hello-world/</url>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><span id="more"></span><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
     
   </entry>
   

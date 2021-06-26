@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="Git 使用时需要查阅的内容">
+  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
   <meta name="author" content="Zak Wind">
   <meta name="keywords" content="">
   
-  <title>Git - Bebopblog</title>
+  <title>Hello World - Bebopblog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Git">
+            <span class="h2" id="subtitle" title="Hello World">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-03-30 20:02" pubdate>
-        2021年3月30日 晚上
+      <time datetime="2021-06-26 20:59" pubdate>
+        2021年6月26日 晚上
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      137 字
+      75 字
     </span>
   
 
@@ -225,52 +225,30 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Git</h1>
+            <h1 style="display: none">Hello World</h1>
             
             <div class="markdown-body">
-              <h3 id="1-配置"><a href="#1-配置" class="headerlink" title="1. 配置"></a>1. 配置</h3><ol>
-<li><p>设置个人信息</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git config --global user.name <span class="hljs-string">&quot;foo&quot;</span><br>$ git config --global user.email foo@bar.com<br></code></pre></td></tr></table></figure></li>
-<li><p>查看配置</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git config --list<br><br>credential.helper=osxkeychain<br>user.name=foo<br>user.email=foo@bar.com<br></code></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="2-ssh"><a href="#2-ssh" class="headerlink" title="2. ssh"></a>2. ssh</h3><ol>
-<li><p>新建密钥</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa -C <span class="hljs-string">&#x27;foo@bar.com&#x27;</span><br></code></pre></td></tr></table></figure>
+              <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<span id="more"></span>
 
-<p> 公钥位置 <code>~/.ssh/id_rsa.pub</code><br> 私钥位置 <code>~/.ssh/id_rsa</code>  </p>
-</li>
-</ol>
-<h3 id="3-命令"><a href="#3-命令" class="headerlink" title="3. 命令"></a>3. 命令</h3><ol>
-<li><p>reset</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git reset [--soft|--mixed|--hard] [版本] [文件]<br></code></pre></td></tr></table></figure>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
 
-<ul>
-<li><p>–mixed</p>
-<p>  默认，可以不用带该参数。将版本库和暂存区回退到工作区</p>
-</li>
-<li><p>–soft</p>
-<p>  将版本库回退到暂存区</p>
-</li>
-<li><p>–hard</p>
-<p>  版本库、暂存区、工作区全部回退（慎用）</p>
-</li>
-</ul>
-</li>
-</ol>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/git/">git</a>
-                    
-                  </div>
                 
               </div>
               
@@ -285,12 +263,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2021/06/26/data-develop-interview/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数据开发面试题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/03/28/hello-world/">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2021/03/30/git-base/">
+                        <span class="hidden-mobile">Git 基础</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
