@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>pandas 随记 20210627</title>
+    <link href="/2021/06/27/pandas-20210627/"/>
+    <url>/2021/06/27/pandas-20210627/</url>
+    
+    <content type="html"><![CDATA[<h2 id="ix-替代方法"><a href="#ix-替代方法" class="headerlink" title="ix 替代方法"></a>ix 替代方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 等价 df.ix[-1, &#x27;name&#x27;]，index 取顺序，columns 取列名</span><br><span class="hljs-comment"># 倒数第一行的&#x27;name&#x27;列</span><br>df.iloc[-<span class="hljs-number">1</span>, df.columns.get_loc(<span class="hljs-string">&#x27;name&#x27;</span>)]<br>df.loc[df.index[-<span class="hljs-number">1</span>], <span class="hljs-string">&#x27;name&#x27;</span>]<br></code></pre></td></tr></table></figure><h2 id="多层行索引只筛第二层"><a href="#多层行索引只筛第二层" class="headerlink" title="多层行索引只筛第二层"></a>多层行索引只筛第二层</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df.loc[(<span class="hljs-built_in">slice</span>(<span class="hljs-literal">None</span>),<span class="hljs-number">1</span>),:]<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>pandas</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>brew 基础</title>
     <link href="/2021/06/27/brew-base/"/>
     <url>/2021/06/27/brew-base/</url>
