@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>git 增量打包</title>
+    <link href="/2021/06/27/git-archive/"/>
+    <url>/2021/06/27/git-archive/</url>
+    
+    <content type="html"><![CDATA[<h2 id="前置基础知识点"><a href="#前置基础知识点" class="headerlink" title="前置基础知识点"></a>前置基础知识点</h2><h3 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h3><p><code>git diff --name-only</code> 可以输出两个版本之间内容不同的文件名，具体参考 <a href="https://git-scm.com/docs/git-diff">git diff</a></p><p>e.g.</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> git diff 24aa42a d0d7112 --name-only</span><br></code></pre></td></tr></table></figure><h3 id="git-archive"><a href="#git-archive" class="headerlink" title="git archive"></a>git archive</h3><p>git 的打包命令，可以批量打包选定分支和版本的文件，具体参考 <a href="https://git-scm.com/docs/git-archive">git archive</a></p><p>e.g.</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> git archive -o dist.zip HEAD</span><br></code></pre></td></tr></table></figure><h2 id="增量打包方案"><a href="#增量打包方案" class="headerlink" title="增量打包方案"></a>增量打包方案</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">git archive -o update.zip master $(git diff 24aa42a d0d7112 --name-only)<br></code></pre></td></tr></table></figure><p>适用于 bash、shell 等，不支持 windows cmd，不支持删文件。</p><p>分支合并、变基等操作都是不影响的，因为本质上是比较两个版本文件的区别。所以有变化的文件都会被打包。</p><p>建议 windows 适用 python 编写脚本进行打包，使用 <code>git diff</code> 获取文件名后，将文件复制到打包目录。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>git</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>数据开发面试题</title>
     <link href="/2021/06/26/data-develop-interview/"/>
     <url>/2021/06/26/data-develop-interview/</url>
